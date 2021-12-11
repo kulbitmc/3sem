@@ -25,11 +25,11 @@ public:
 		delete[] memory;
 	}
 
-	T operator()(size_t x_idx, size_t y_idx) const {
+	int operator()(size_t x_idx, size_t y_idx) const {
 		return memory[(x_idx - 1) + x_size * (y_idx - 1)];
 	}
 
-	T& operator()(size_t x_idx, size_t y_idx) {
+	int& operator()(size_t x_idx, size_t y_idx) {
 		return memory[(x_idx - 1) + x_size * (y_idx - 1)];
 	}
 
