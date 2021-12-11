@@ -1,15 +1,15 @@
 #include <iostream>
 
-template <typename T> // takes into account the comment about different data types
+template <typename int> // takes into account the comment about different data types
 class Grid {
 private:
-	T* memory;
+	int* memory;
 	size_t x_size, y_size;
 public:
 
 	// allocates memory for a one-dimension array
 	
-	Grid(size_t x_size, size_t y_size): x_size(x_size), y_size(y_size), memory(new T[x_size*y_size]){ };
+	Grid(size_t x_size, size_t y_size): x_size(x_size), y_size(y_size), memory(new int[x_size*y_size]){ };
 
 	// constructor for making copies
 
@@ -45,7 +45,7 @@ public:
 
 	// assignment operator
 
-	Grid& operator = (T value) {
+	Grid& operator = (int value) {
 		for (size_t pos = 0; pos != x_size * y_size; ++pos) {
 			memory[pos] = value;
 		}
@@ -55,8 +55,8 @@ public:
 	// << overloading
 
 	friend std::ostream& operator << (std::ostream& out, Grid const& grid) {
-		for (T i = 1; i != grid.y_size + 1; ++i) {
-			for (T j = 1; j != grid.x_size + 1; ++j) {
+		for (int i = 1; i != grid.y_size + 1; ++i) {
+			for (int j = 1; j != grid.x_size + 1; ++j) {
 				out << grid.memory[(j - 1) + grid.x_size * (i - 1)] << ' ';
 			}
 			out << std::endl;
@@ -68,7 +68,7 @@ public:
 	// >> overloading
 
 	friend std::istream& operator>>(std::istream& in, Grid& grid) {
-		for (T i = 0; i != grid.y_size*grid.x_size; ++i) {
+		for (int i = 0; i != grid.y_size*grid.x_size; ++i) {
 			in >> grid.memory[i];
 		}
 		return in;
